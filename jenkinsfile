@@ -1,8 +1,10 @@
-properties([pipelineTriggers([githubPush()])])
+stage ("GetInstances") {
 
-node('linux') {
-    git url: 'https://github.com/SurekshyaSharma/infrastructure-pipeline.git', branch: 'master'
-    stage('Test') {
-        sh "env"
-    }
+    sh "aws ec2 describe-instances --region us-east-1"
+}
+
+stage ("CreateInstance") {
+    // TODO
+  sh  "aws ec2 run-instances --image-id ami-0080e4c5bc078760e --count 1 --instance-type t2.micro --key-name DEVops --security-group-ids sg-2651296a --subnet-id subnet-410f8f1d --region us-east-1"
+
 }
