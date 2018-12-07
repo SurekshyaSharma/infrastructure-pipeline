@@ -1,6 +1,3 @@
 # infrastructure-pipeline
 class-work1
-inclass-excercise
-A1
-r
-hq
+inclass-exercise
